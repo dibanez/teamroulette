@@ -3,6 +3,7 @@ from . import models
 
 
 class TeamSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = models.Team
 
@@ -13,3 +14,4 @@ class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Player
         fields = ('id', 'name', 'team')
+
