@@ -1,16 +1,22 @@
 from rest_framework.viewsets import ModelViewSet
-from . import models, permissions
+from . import models
+from . import permisssions
 
 
 class TeamViewSet(ModelViewSet):
     model = models.Team
-    permission_classes = (permissions.IsOwnerPermission, )
+    permission_classes = (permisssions.IsOwnerPermission, )
 
-    #Modificamos la query para devolver los registros del usuario.
     def filter_queryset(self, queryset):
-        queryset = super(TeamViewSet, self).filter_queryset(queryset)
+        queryset = super().filter_queryset(queryset)
         return queryset.filter(owner=self.request.user)
 
 
 class PlayerViewSet(ModelViewSet):
     model = models.Player
+    permission_classes = (permisssions.IsOwnerPermission, )
+
+
+class TournamentViewSet(ModelViewSet):
+    model = models.Tournament
+    permission_classes = (permisssions.IsOwnerPermission, )

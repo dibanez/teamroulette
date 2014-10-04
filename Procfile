@@ -1,1 +1,1 @@
-web: python manage.py collectstatic --noinput ; gunicorn teamroulette.wsgi
+web: gunicorn teamroulette.wsgi --log-file -

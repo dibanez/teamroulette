@@ -5,12 +5,17 @@ Team roulette
 Boostraping
 -----------
 
+0. Clonar repo
+
+   .. code::
+
+       git clone git@github.com:migonzalvar/teamroulette.git
+       cd teamroulette
+
 1. Crear entorno virtual
 
    .. code::
    
-       mkdir teamroulette
-       cd teamroulette
        python3.4 -m venv .venv
 
 2. Activar entorno
@@ -27,17 +32,12 @@ Boostraping
 
        .venv\Scripts\activate.bat
 
-3. Instalar Django
+3. Instalar requisitos
 
    .. code::
 
-       pip install django
+       pip install django djangorestframework
 
-4. Inicializar proyecto
-
-  .. code::
-  
-      django-admin startproject teamroulette .
 
 Comandos Django
 ---------------
@@ -65,4 +65,20 @@ startapp *<app>*
 
 makemigrations *<app>*
     Genera código para migración de modelos
+
+.. note:: Inicializar proyecto
+
+      .. code::
+      
+          django-admin startproject teamroulette .
+
+Heroku
+------
+
+.. code::
+
+    heroku create
+    git push heroku master
+    heroku run python manage.py migrate
+    heroku open
 

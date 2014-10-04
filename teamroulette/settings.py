@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -60,13 +61,6 @@ WSGI_APPLICATION = 'teamroulette.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
 DEV_DATABASE = 'sqlite::///%s' % os.path.join(BASE_DIR, 'db.sqlite3')
 DATABASES = {'default': dj_database_url.config(default=DEV_DATABASE)}
 
@@ -89,8 +83,6 @@ USE_TZ = True
 
 STATIC_ROOT = 'staticfiles'
 
-STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '/static'),
 )
@@ -100,11 +92,9 @@ TEMPLATE_DIRS = (
 )
 
 
-#Django REST Framework
-#http://www.django-rest-framework.org/api-guide/settings
+# Django REST Framework
+# http://www.django-rest-framework.org/api-guide/settings
 
-
-#http://www.django-rest-framework.org/api-guide/permissions
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
