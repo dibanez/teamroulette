@@ -1,31 +1,35 @@
 from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 
 from . import forms
 
 
 def process_form(request, form_class):
+    dictionary = {'name': 'David'}
     if request.method == 'GET':
         form = form_class()
-        dictionary = {
-                     'name': 'David',
-                     'form': form,
-                     }
+        dictionary['form'] = form
         return render(request,
                       'teams/index.html',
                       dictionary=dictionary)
     elif request.method == 'POST':
         form = form_class(data=request.POST)
         if form.is_valid():
-            return redirect('/')
+            if hasattr(form, 'save'):
+                form.save()
+            return redirect(reverse('home'))
         else:
-            dictionary = {
-                        'name': 'David',
-                        'form': form,
-                        }
+            dictionary['form'] = form
             return render(request,
                           'teams/index.html',
                           dictionary=dictionary)
 
-def main(request):
+
+def team(request):
     form_class = forms.TeamForm
+    return process_form(request, form_class)
+
+
+def player(request):
+    form_class = forms.PlayerModelForm
     return process_form(request, form_class)
