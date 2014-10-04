@@ -8,5 +8,7 @@ urlpatterns = patterns('',
 
     url(r'^api/', include('teams.urls', namespace='teams')),
 
+    url(r'^token/', 'rest_framework.authtoken.views.obtain_auth_token'),
+
     url(r'^admin/', include(admin.site.urls)),
 )
