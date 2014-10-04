@@ -8,7 +8,8 @@ class TeamSerializer(serializers.ModelSerializer):
 
 
 class PlayerSerializer(serializers.ModelSerializer):
-    team = serializers.RelatedField()
+    team = TeamSerializer(read_only=False)
 
     class Meta:
         model = models.Player
+        fields = ('id', 'name', 'team')
