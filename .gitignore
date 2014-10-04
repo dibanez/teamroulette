@@ -1,1 +1,6 @@
 db.sqlite3
+.idea
+.venv
+/teamroulette/__pycache__
+/teams/migrations
+*.pyc
