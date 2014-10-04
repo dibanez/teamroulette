@@ -6,5 +6,7 @@ urlpatterns = patterns('',
     url(r'^$', 'teamroulette.views.home', name='home'),
     url(r'^teams/', include('teams.urls', namespace='teams')),
 
+    url(r'^api/', include('teams.urls', namespace='teams')),
+
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,9 +1,9 @@
-from django.conf.urls import patterns, include, url
+from rest_framework.routers import DefaultRouter
+from . import viewsets
 
-urlpatterns = patterns(
-    '',
-    url(r'^team/$', 'teams.views.team', name='team'),
-    url(r'^player/$', 'teams.views.player', name='player'),
 
-    url(r'^api/', include('teams.api_urls')),
-)
+router = DefaultRouter()
+router.register('teams', viewsets.TeamViewSet)
+router.register('players', viewsets.PlayerViewSet)
+
+urlpatterns = router.urls
