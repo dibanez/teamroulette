@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 
 from . import forms
 
+
 def process_form(request, form_class):
     dictionary = {'name': 'Miguel'}
     if request.method == 'GET':
@@ -23,9 +24,11 @@ def process_form(request, form_class):
                           'teams/index.html',
                           dictionary=dictionary)
 
+
 def team(request):
     form_class = forms.TeamForm
     return process_form(request, form_class)
+
 
 def player(request):
     form_class = forms.PlayerModelForm
