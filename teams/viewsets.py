@@ -1,15 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
-from . import models
-from rest_framework.permissions import BasePermission
-
-class IsOwnerPermission(BasePermission):
-    def has_object_permission(self, request, view, obj):
-        return request.user == obj.owner
+from . import models, permissions
 
 
 class TeamViewSet(ModelViewSet):
     model = models.Team
-    permission_classes = IsOwnerPermission
+    permission_classes = (permissions.IsOwnerPermission, )
 
 
 class PlayerViewSet(ModelViewSet):
